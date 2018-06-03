@@ -26,10 +26,10 @@ public class ControllerInputManager : MonoBehaviour {
 	private Vector3 teleportLocation;
 	public GameObject player;
 	public LayerMask laserMask;
-	public float yNudgeAmount = 2f; 
-	public float teleporterMaxHorizontal = 15.0f;
-	public float teleporterMaxVertical = 17.0f;
-	public float playerHeight = 2.0f;
+	public float yNudgeAmount = .05f; 
+	public float teleporterMaxHorizontal = 10.0f;
+	public float teleporterMaxVertical = 10.0f;
+	public float playerHeight = 0f;
 	public float xOffset = 0.25f;
 	public float zOffset = -.75f;
 	private bool canTeleport = false;
