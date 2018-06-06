@@ -47,10 +47,9 @@ public class ControllerInputManager : MonoBehaviour {
 	public float moveSpeed = 4f;
 	private Vector3 movementDirection;
 
-	// Hellfire level
-	public bool isHellfireLevel = false;
-	bool dogChambered = false;
-	public AudioSource shootDog;
+	// Shooting
+	public GameObject projectile;
+	public AudioSource projectileSound;
 
 	// Use this for initialization
 	void Start () {
@@ -66,6 +65,13 @@ public class ControllerInputManager : MonoBehaviour {
 		device = SteamVR_Controller.Input((int)trackedObj.index);
 		leftDevice = SteamVR_Controller.Input(leftIndex);
 		rightDevice = SteamVR_Controller.Input(rightIndex);
+
+
+		// Detect a shot
+		if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
+		{
+			ShootProjectile();
+		}
 
 
 		/**** Teleportation ****/
@@ -174,38 +180,9 @@ public class ControllerInputManager : MonoBehaviour {
 					GrabObject(col);
 			}
 		}
-
-		if (col.gameObject.CompareTag("Shootable"))
-		{
-			if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
-			{
-				if (dogChambered) // For the Hellfire level, shoot a dog out if it has been chambered by the player
-				{
-					dogChambered = false;
-					ShootDog(col);
-				}
-				else // For the Hellfire level, chamber a dog on the first trigger click
-				{
-					dogChambered = true;
-					GrabObject(col);
-				}
-			}
-		}
-
-		if (col.gameObject.CompareTag("Rich"))
-		{
-			if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
-			{
-				RaiseShield(col);
-			}
-			else if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
-			{
-				LowerShield(col);
-			}
-		}
 	}
 
-	// Grab dogs or objects
+	// Grab objects
 	void GrabObject(Collider coli)
 	{
 		coli.transform.SetParent(gameObject.transform);
@@ -213,7 +190,7 @@ public class ControllerInputManager : MonoBehaviour {
 		device.TriggerHapticPulse(2000);
 	}
 
-	// Throw dogs or objects
+	// Throw objects
 	void ThrowObject(Collider coli)
 	{
 		coli.transform.SetParent(null);
@@ -223,28 +200,21 @@ public class ControllerInputManager : MonoBehaviour {
 		rigidBody.angularVelocity = device.angularVelocity;
 	}
 
-	// Shoot dog out in front of player
-	void ShootDog(Collider coli)
-	{
-		coli.transform.SetParent(null);
-		Rigidbody rigidBody = coli.GetComponent<Rigidbody>();
-		rigidBody.isKinematic = false;
-		shootDog.Play();
-		rigidBody.AddTorque(0, 5f, 0, ForceMode.Impulse);
-		rigidBody.AddForce(gameObject.transform.forward * 25f, ForceMode.Impulse);
-	}
-
-	// The following shield functions protect the rich dogs from being grabbed and thrown
-
-	void RaiseShield(Collider coli)
-	{
-		coli.transform.Find("Shield").gameObject.SetActive(true);
-	}
-
-	void LowerShield(Collider coli)
-	{
-		coli.transform.Find("Shield").gameObject.SetActive(false);
-	}
-
 	/**** End Grabbing and Throwing ****/
+
+	/**** Shooting ****/
+
+	// Shoot orb out in front of player
+	void ShootProjectile()
+		{
+			projectile.transform.SetParent(null);
+			projectile.SetActive(true);
+			Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
+			rigidBody.isKinematic = false;
+			//projectileSound.Play();
+			rigidBody.AddTorque(0, 5f, 0, ForceMode.Impulse);
+			rigidBody.AddForce(gameObject.transform.forward * 25f, ForceMode.Impulse);
+		}
+
+	/**** End Shooting ****/
 }

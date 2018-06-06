@@ -10,8 +10,15 @@ public class ControllerInputEditor : Editor
 	{
 		var ControllerInputManager = target as ControllerInputManager;
 
+		EditorGUILayout.PrefixLabel("Projectile");
+		ControllerInputManager.projectile = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.projectile, typeof(GameObject), true);
+		EditorGUILayout.PrefixLabel("Projectile Sound");
+		ControllerInputManager.projectileSound = (AudioSource)EditorGUILayout.ObjectField(ControllerInputManager.projectileSound, typeof(AudioSource), true);
+
 		ControllerInputManager.throwForce = EditorGUILayout.FloatField("Throw Force", ControllerInputManager.throwForce);
 		ControllerInputManager.leftController = EditorGUILayout.Toggle("Left Controller", ControllerInputManager.leftController);
+
+		
 
 		using (var group = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(ControllerInputManager.leftController)))
 		{
@@ -53,34 +60,6 @@ public class ControllerInputEditor : Editor
 			}
 		}
 
-		/*ControllerInputManager.rightController = EditorGUILayout.Toggle("Right Controller", ControllerInputManager.rightController);
-		using (var group = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(ControllerInputManager.rightController)))
-		{
-			if (group.visible == true)
-			{
-				EditorGUI.indentLevel++;
-				ControllerInputManager.isLandmineLevel = EditorGUILayout.Toggle("isLandmineLevel?", ControllerInputManager.isLandmineLevel);
-
-				using (var group2 = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(ControllerInputManager.isLandmineLevel)))
-				{
-					if (group2.visible == true)
-					{
-						EditorGUI.indentLevel++;
-						ControllerInputManager.landmines = (LandmineManager)EditorGUILayout.ObjectField(ControllerInputManager.landmines, typeof(LandmineManager), true);
-					}
-				}
-			}
-		}*/
-
-		ControllerInputManager.isHellfireLevel = EditorGUILayout.Toggle("isHellfireLevel?", ControllerInputManager.isHellfireLevel);
-		using (var group = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(ControllerInputManager.isHellfireLevel)))
-		{
-			if (group.visible == true)
-			{
-				EditorGUI.indentLevel++;
-				ControllerInputManager.shootDog = (AudioSource)EditorGUILayout.ObjectField(ControllerInputManager.shootDog, typeof(AudioSource), true);
-			}
-		}
 	}
 }
 
