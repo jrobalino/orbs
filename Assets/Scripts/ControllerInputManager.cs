@@ -49,7 +49,7 @@ public class ControllerInputManager : MonoBehaviour {
 
 	// Shooting
 	public GameObject projectile;
-	public AudioSource projectileSound;
+	public Projectile projectileScript;
 
 	// Use this for initialization
 	void Start () {
@@ -207,13 +207,7 @@ public class ControllerInputManager : MonoBehaviour {
 	// Shoot orb out in front of player
 	void ShootProjectile()
 		{
-			projectile.transform.SetParent(null);
-			projectile.SetActive(true);
-			Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
-			rigidBody.isKinematic = false;
-			//projectileSound.Play();
-			rigidBody.AddTorque(0, 5f, 0, ForceMode.Impulse);
-			rigidBody.AddForce(gameObject.transform.forward * 25f, ForceMode.Impulse);
+		projectileScript.shootProjectile(projectile);
 		}
 
 	/**** End Shooting ****/

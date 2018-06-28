@@ -12,8 +12,8 @@ public class ControllerInputEditor : Editor
 
 		EditorGUILayout.PrefixLabel("Projectile");
 		ControllerInputManager.projectile = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.projectile, typeof(GameObject), true);
-		EditorGUILayout.PrefixLabel("Projectile Sound");
-		ControllerInputManager.projectileSound = (AudioSource)EditorGUILayout.ObjectField(ControllerInputManager.projectileSound, typeof(AudioSource), true);
+		EditorGUILayout.PrefixLabel("Projectile Script");
+		ControllerInputManager.projectileScript = (Projectile)EditorGUILayout.ObjectField(ControllerInputManager.projectileScript, typeof(Projectile), true);
 
 		ControllerInputManager.throwForce = EditorGUILayout.FloatField("Throw Force", ControllerInputManager.throwForce);
 		ControllerInputManager.leftController = EditorGUILayout.Toggle("Left Controller", ControllerInputManager.leftController);
