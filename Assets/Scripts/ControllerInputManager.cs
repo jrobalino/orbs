@@ -30,8 +30,8 @@ public class ControllerInputManager : MonoBehaviour {
 	public float teleporterMaxHorizontal = 10.0f;
 	public float teleporterMaxVertical = 10.0f;
 	public float playerHeight = 0f;
-	public float xOffset = 0.25f;
-	public float zOffset = -.75f;
+	public float xOffset = 0.0f;
+	public float zOffset = 0.0f;
 	private bool canTeleport = false;
 
 	// Dash
