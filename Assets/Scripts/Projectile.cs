@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour {
 		
 	}
 
-	void resetProjectile()
+	public void resetProjectile()
 	{
 		projectileActive = false;
 		rb.velocity = Vector3.zero;
