@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orb : MonoBehaviour
+public class Orbs : MonoBehaviour
 {
 	// This script controls how the orbs behave
 
@@ -25,13 +25,13 @@ public class Orb : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		// When a projectile hits an orb, deactivate the orb and reset the projectile
 
-		
-		if (collision.collider.tag == "Shootable")
+		if (collision.collider.tag == "Projectile")
 		{
 			//goodJob.Play();
-			collision.gameObject.SetActive(false);
 			gameObject.SetActive(false);
+			collision.gameObject.GetComponent<Projectile>().resetProjectile();
 		}
 	}
 }
