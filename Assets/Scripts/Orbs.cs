@@ -8,6 +8,7 @@ public class Orbs : MonoBehaviour
 
 	public AudioSource goodJob;
 	public Transform center;
+	public LevelManager levelManager;
 
 	// Use this for initialization
 	void Start()
@@ -32,6 +33,7 @@ public class Orbs : MonoBehaviour
 			//goodJob.Play();
 			gameObject.SetActive(false);
 			collision.gameObject.GetComponent<Projectile>().resetProjectile();
+			levelManager.orbHit();
 		}
 	}
 }
