@@ -6,7 +6,6 @@ public class Orbs : MonoBehaviour
 {
 	// This script controls how the orbs behave
 
-	public AudioSource goodJob;
 	public Transform center;
 	public LevelManager levelManager;
 
@@ -30,7 +29,6 @@ public class Orbs : MonoBehaviour
 
 		if (collision.collider.tag == "Projectile")
 		{
-			//goodJob.Play();
 			gameObject.SetActive(false);
 			collision.gameObject.GetComponent<Projectile>().resetProjectile();
 			levelManager.orbHit();

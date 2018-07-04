@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour {
 			projectile.SetActive(true);
 			Rigidbody rigidBody = projectile.GetComponent<Rigidbody>();
 			rigidBody.isKinematic = false;
-			//projectileSound.Play();
+			projectileSound.Play();
 			//rigidBody.AddTorque(0, 5f, 0, ForceMode.Impulse);
 			rigidBody.AddForce(gameObject.transform.forward * 25f, ForceMode.Impulse);
 		}
