@@ -27,10 +27,10 @@ public class ControllerInputEditor : Editor
 				EditorGUI.indentLevel++;
 				EditorGUILayout.PrefixLabel("Teleport Aimer Object");
 				ControllerInputManager.teleportAimerObject = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.teleportAimerObject, typeof(GameObject), true);
-				EditorGUILayout.PrefixLabel("Disabled Aimer Object");
-				ControllerInputManager.disabledAimerObject = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.disabledAimerObject, typeof(GameObject), true);
-				EditorGUILayout.PrefixLabel("Laser");
-				ControllerInputManager.laser = (LineRenderer)EditorGUILayout.ObjectField(ControllerInputManager.laser, typeof(LineRenderer), true);
+				//EditorGUILayout.PrefixLabel("Disabled Aimer Object");
+				//ControllerInputManager.disabledAimerObject = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.disabledAimerObject, typeof(GameObject), true);
+				//EditorGUILayout.PrefixLabel("Laser");
+				//ControllerInputManager.laser = (LineRenderer)EditorGUILayout.ObjectField(ControllerInputManager.laser, typeof(LineRenderer), true);
 				EditorGUILayout.PrefixLabel("Player");
 				ControllerInputManager.player = (GameObject)EditorGUILayout.ObjectField(ControllerInputManager.player, typeof(GameObject), true);
 				ControllerInputManager.laserMask = EditorTools.LayerMaskField("Laser Mask", ControllerInputManager.laserMask);

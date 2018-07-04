@@ -20,9 +20,9 @@ public class ControllerInputManager : MonoBehaviour {
 
 	public bool leftController;
 
-	public LineRenderer laser;
+	//public LineRenderer laser;
 	public GameObject teleportAimerObject;
-	public GameObject disabledAimerObject;
+	//public GameObject disabledAimerObject;
 	private Vector3 teleportLocation;
 	public GameObject player;
 	public LayerMask laserMask;
@@ -99,51 +99,51 @@ public class ControllerInputManager : MonoBehaviour {
 		else
 		{
 
-			if (leftDevice.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && laser != null)
+			if (leftDevice.GetPress(SteamVR_Controller.ButtonMask.Touchpad) && leftController)
 			{
 				canTeleport = false;
-				laser.gameObject.SetActive(true);
+				//laser.gameObject.SetActive(true);
 				teleportAimerObject.SetActive(true);
 
-				laser.SetPosition(0, gameObject.transform.position);
+				//laser.SetPosition(0, gameObject.transform.position);
 				RaycastHit hit;
 				if (Physics.Raycast(transform.position, transform.forward, out hit, teleporterMaxHorizontal, laserMask))
 				{
-					disabledAimerObject.SetActive(false);
+					//disabledAimerObject.SetActive(false);
 					teleportAimerObject.GetComponent<Renderer>().material.color = new Color(.42f, .82f, .56f, .39f);
 					canTeleport = true;
 					teleportLocation = hit.point;
-					laser.SetPosition(1, teleportLocation);
+					//laser.SetPosition(1, teleportLocation);
 					//aimer position
 					teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + yNudgeAmount, teleportLocation.z);
 				}
 				else
 				{
-					disabledAimerObject.SetActive(true);
-					laser.gameObject.SetActive(false);
+					//disabledAimerObject.SetActive(true);
+					//laser.gameObject.SetActive(false);
 					teleportAimerObject.SetActive(false);
 					canTeleport = false;
 					teleportLocation = new Vector3(transform.forward.x * teleporterMaxHorizontal + transform.position.x, transform.forward.y * teleporterMaxHorizontal + transform.position.y, transform.forward.z * teleporterMaxHorizontal + transform.position.z);
 					RaycastHit groundRay;
 					if (Physics.Raycast(teleportLocation, -Vector3.up, out groundRay, teleporterMaxVertical, laserMask))
 					{
-						disabledAimerObject.SetActive(false);
-						laser.gameObject.SetActive(true);
+						//disabledAimerObject.SetActive(false);
+						//laser.gameObject.SetActive(true);
 						teleportAimerObject.SetActive(true);
 						canTeleport = true;
 						teleportLocation = new Vector3(transform.forward.x * teleporterMaxHorizontal + transform.position.x, groundRay.point.y, transform.forward.z * teleporterMaxHorizontal + transform.position.z);
 					}
-					laser.SetPosition(1, transform.forward * teleporterMaxHorizontal + transform.position);
+					//laser.SetPosition(1, transform.forward * teleporterMaxHorizontal + transform.position);
 					//aimer
 					teleportAimerObject.transform.position = teleportLocation + new Vector3(0, yNudgeAmount, 0);
 
 				}
 			}
 		}
-		if (leftDevice.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && laser != null)
+		if (leftDevice.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad) && leftController)
 		{
-			disabledAimerObject.SetActive(false);
-			laser.gameObject.SetActive(false);
+			//disabledAimerObject.SetActive(false);
+			//laser.gameObject.SetActive(false);
 			teleportAimerObject.SetActive(false);
 
 			if (canTeleport)

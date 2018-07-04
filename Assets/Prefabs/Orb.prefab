@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23285979069682572}
   - component: {fileID: 135424328411100962}
   - component: {fileID: 114090687598034430}
+  - component: {fileID: 114367087708085314}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9ed0ec8219329e34986d2b6a84506cdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +85,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1224970147771740}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114090687598034430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,6 +99,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goodJob: {fileID: 0}
   center: {fileID: 0}
+--- !u!114 &114367087708085314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224970147771740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b023811951e5024a9b78fd7e14f3245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 1
+  Smoke1Speed: {x: 0.05, y: 0.1}
+  Smoke2Speed: {x: 0.1, y: 0.1}
+  Particles1Speed: {x: 0.2, y: 0.1}
+  Particles2Speed: {x: 0.15, y: 0.05}
+  SurfaceSpeed: 0.1
 --- !u!135 &135424328411100962
 SphereCollider:
   m_ObjectHideFlags: 1

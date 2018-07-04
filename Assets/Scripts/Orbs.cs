@@ -19,7 +19,7 @@ public class Orbs : MonoBehaviour
 	void Update()
 	{
 		// Rotate the orbs around a chosen center
-		transform.RotateAround(transform.position, transform.up, Time.deltaTime * 9f);
+		//transform.RotateAround(transform.position, transform.up, Time.deltaTime * 9f);
 		transform.RotateAround(center.position, transform.up, Time.deltaTime * 9f);
 	}
 
